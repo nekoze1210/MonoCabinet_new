@@ -25,7 +25,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry-rails'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'chromedriver-helper', '~> 1.1.0'
   gem 'factory_bot_rails'
 end
 
