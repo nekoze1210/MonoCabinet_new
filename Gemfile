@@ -19,12 +19,17 @@ gem 'geocoder'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'kaminari'
+gem 'haml-rails'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 3.7.2'
+  gem 'chromedriver-helper', '~> 1.1.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -33,4 +38,5 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
+  gem 'annotate'
 end

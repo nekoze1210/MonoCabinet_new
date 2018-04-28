@@ -1,0 +1,6 @@
+.container.text-center
+  = form_for([@user, @item, @location], data: { remote: true }) do |f|
+    = f.hidden_field :latitude
+    = f.hidden_field :longitude
+    = f.hidden_field :item_id, value: @item.id
+    = button_tag '現在地を登録', id: 'submit', class: 'btn btn-primary', autocomplete: 'off', form: {'data-loading-text' =>'Loading...'}

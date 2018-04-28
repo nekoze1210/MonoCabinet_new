@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title MonoCabinet
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    -# TODOAPI_IDをENVもしくは定数として保持すること
+    %script{ src:"//maps.google.com/maps/api/js?key=xxxxxxxxxxxxxxxxxxxx" }
+    %script{ src:"//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+    %script{ src:'//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js', type: 'text/javascript' }
+    %meta{content: "width=device-width", name: "viewport", overflow: :hidden}
+    = csrf_meta_tags
+  %body.animated.fadeIn
+    #wrapper
+      - unless controller.action_name == "welcome"
+        = render partial: 'common/header'
+        = render partial: 'common/search_modal'
+      = render partial: 'common/flash'
+      = yield
+      - unless controller_name =='items' || controller_name == 'users' || controller_name == 'locations'
+        = render partial: 'common/footer'

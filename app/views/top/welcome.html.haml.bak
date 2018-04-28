@@ -1,0 +1,55 @@
+.text-center{:style => "background-color:#79D1B0;"}
+  %h1.animated.fadeInLeftBig{:style => "letter-spacing: 2px;"} Otoshimonno
+  %p おっちょこちょいなあなたに、忘れ物・落し物をしない習慣を付けてくれます。
+  %a= link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary'
+  %a= link_to 'サインイン', new_user_session_path,  :class => 'btn btn-lg btn-warning'
+#carousel-example-generic.carousel.slide.cal2{"data-ride" => "carousel"}
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+    %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+    %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+  .carousel-inner{:role => "listbox"}
+    .item.active
+      = image_tag ("carousel1.jpg")
+    .item
+      = image_tag ("carousel2.jpg")
+    .item
+      = image_tag ("carousel3.jpg")
+  / Controls
+  %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic", :role => "button"}
+    %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+    %span.sr-only Previous
+  %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic", :role => "button"}
+    %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+    %span.sr-only Next
+.content-section-a{:style => "border-top: 0"}
+  .container
+    .col-md-6.col-md-offset-3.text-center.wrap_title
+      %h2 What is?
+      %p.lead オトシモンノは落し物を探す為のアプリではありません。
+      %p.lead 落し物・忘れ物を無くす最大の手段として、常に今いる場所を手動で更新していただきます。
+      %p
+        %a.btn.btn-embossed.btn-primary.view{:href => "/help", :role => "button"} View Details
+.content-section-b
+  .container
+    %h2.text-center Features
+    .row
+      .col-sm-6.wow.fadeInDown.text-center
+        = image_tag 'icon/iphone.svg', :class => 'rotate img-circle', :size => '100x100' ,:alt => 'alt="Generic placeholder image'
+        %h3 Simple, and Responsive
+        %p.lead
+          PC・スマートフォンから見やすく、
+          %br>/
+          そして簡単に操作できます。
+      .col-sm-6.wow.fadeInDown.text-center
+        = image_tag 'icon/map.svg', :class => 'rotate' ,:alt => 'alt="Generic placeholder image'
+        %h3 Geolocation
+        %p.lead お使いの端末から位置情報を取得します。いざ紛失した時でも保存した位置情報から辿って物を見つけることができるかもしれません。
+.content-section-a
+  %hr{:align => "center", :width => "30%"}/
+  .sign
+    %h3.text-center まずは新規登録から！
+    .text-center
+      = link_to '新規登録', new_user_registration_path ,  :class => 'btn btn-lg btn-primary'
+      = link_to 'ログイン', new_user_session_path,  :class => 'btn btn-lg btn-warning'
+  %hr{:align => "center", :width => "30%"}/
