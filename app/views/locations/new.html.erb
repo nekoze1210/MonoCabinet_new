@@ -1,0 +1,39 @@
+
+<div class="container text-center">
+<h3>現在地を登録します。</h3>
+  <%= form_for @location, :url =>{:controller => 'locations', :action => 'create' } do |f| %>
+  <%= f.hidden_field :latitude  %>
+  <%= f.hidden_field :longitude  %>
+
+
+<button type="button" id="myButton" data-loading-text="位置情報を取得中..." class="btn btn-primary" autocomplete="off">
+<%= f.submit "登録", :class => "btn btn-primary", :id => "loc_submit" %>
+</button>
+
+
+
+<script>
+  $('#myButton').on('click', function () {
+    var $btn = $(this).button('loading')
+        var options = {
+            enableHighAccuracy: true ,
+            timeout: 10000,
+            maximumAge: 0
+        };
+        window.navigator.geolocation.getCurrentPosition(success, error, options);
+
+      function success(pos) {
+          document.getElementById('location_latitude').value = pos.coords.latitude;
+          document.getElementById('location_longitude').value = pos.coords.longitude;
+          $("#new_location").submit();
+      }
+
+      function error(err) {
+        alert("位置情報が取得できませんでした。\n ページを更新するか、端末を変えてください。")
+      }
+  })
+</script>
+
+
+  <% end %>
+  </div>

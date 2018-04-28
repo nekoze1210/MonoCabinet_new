@@ -1,0 +1,12 @@
+#search-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{ 'data-dismiss' => 'modal', 'aria-hidden' => 'true' }
+        %h4.modal-title 検索
+      - if controller.controller_name == 'items' && action_name == 'index'
+        = search_form_for @q, url: search_user_items_path, method: :get do |f|
+          .modal-body
+            = f.search_field :item_name_cont, placeholder: '検索したいアイテム名を入力', required: true, class: 'form-control'
+          .modal-footer
+            = f.submit 'Search', class: 'btn btn-primary'

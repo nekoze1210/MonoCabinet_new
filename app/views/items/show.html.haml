@@ -1,0 +1,63 @@
+.container
+  .col-md-12{:style => "padding-top: 20px;"}
+    #image-container.col-md-6.col-xs-12.text-center
+      - if @item.image?
+        = image_tag @item.image.url, class: 'img img-responsive'
+      - else
+        = image_tag 'noimage.png', class: 'img img-responsive'
+    .col-md-6.col-xs-12{:style => "border:2px solid #bdc3c7; border-radius:10px; "}
+      %p
+        %strong アイテム:
+      %p= @item.item_name
+      %p
+        %strong メーカー:
+      %p= @item.maker
+      %p
+        登録日:
+        %br/
+        = @item.created_at.strftime('%m月%d日 %H:%M')
+      %p
+        更新回数: #{@item.locations.count}回
+      - if @item.locations.count >= 6
+        %strong.text-center かなりの頻度で更新されていますね!
+      - elsif @item.locations.count >= 1
+        %strong.text-center 良い頻度で更新されていますね!
+  .col-md-12.col-xs-12
+    %h4 あなたが登録した位置
+    %table.table
+      %thead
+        %tr
+          %th 住所:
+          %th
+          %th 更新日時:
+        %tr
+      %tbody
+        .text-center
+          = form_for @location, url: user_item_locations_path(current_user, @item) do |f|
+            = f.hidden_field :latitude
+            = f.hidden_field :longitude
+            = f.submit '位置を更新する', class: 'btn btn-lg btn-embossed btn-primary', id: 'updateButton', data: { 'loading-text' => '位置情報を登録中' }
+        - @locations.each do |location|
+          %tr
+            %td= location.address
+            %td
+              %a.text-right.btn.btn-danger{:href => "http://maps.google.co.jp/maps?q=#{location.address}", :target => "_blank"} [GoogleMapで確認]
+            %td= location.created_at.strftime('%Y年%m月%d日 %H:%M')
+  .col-md-12.col-xs-12
+    #map{:style => "width: 100%; height: 250px;"}
+  .col-md-12.col-xs-12{style: 'padding-top: 20px;'}
+    = link_to '削除', user_item_path, method: :delete, class: 'btn btn-danger', confirm: "登録されたアイテム、位置情報は削除されます。\n 本当によろしいですか?"
+    = link_to '戻る', user_items_path, class: 'btn btn-default'
+    = link_to 'ツイートする', tweet_user_items_path(user_id: current_user, id: @item), method: :post, class: 'btn btn-warning'
+
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    polyline_options = { strokeColor: '#1ABC9C', strokeWeight: 5, strokeOpacity: 0.5, geodesic: true }
+    polyline = handler.addPolyline(#{raw @polylines.to_json}, polyline_options);
+    handler.bounds.extendWith(markers);
+    handler.bounds.extendWith(polyline);
+    handler.fitMapToBounds()
+    google.maps.event.trigger(markers[0].getServiceObject(), 'click');
+  });

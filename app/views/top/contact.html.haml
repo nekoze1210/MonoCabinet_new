@@ -1,0 +1,42 @@
+#contact.content-section-a
+  .container
+    .row
+      .col-md-6.col-md-offset-3.text-center.wrap_title
+        %h2 Contact Us
+        %p{:style => "margin-top:0"} otoshimonnoをご利用いただき、誠にありがとうございます。ご要望のある方は下記のフォームを記入の上、送信をお願い致します。
+      %form{:action => "nekorporation25@gmail.com", :method => "post", :role => "form"}
+        .col-md-6
+          .form-group
+            %label{:for => "InputName"} お名前:
+            .input-group
+              %input#InputName.form-control{:name => "InputName", :placeholder => "例: 落年紋太郎(オトシ モンタロウ)", :required => "", :type => "text"}/
+              %span.input-group-addon
+                %i.glyphicon.glyphicon-ok.form-control-feedback
+          .form-group
+            %label{:for => "InputEmail"} メールアドレス:
+            .input-group
+              %input#InputEmail.form-control{:name => "InputEmail", :placeholder => "例: mail@email.com", :required => "", :type => "email"}/
+              %span.input-group-addon
+                %i.glyphicon.glyphicon-ok.form-control-feedback
+          .form-group
+            %label{:for => "InputMessage"} お問い合わせ内容
+            .input-group
+              %textarea#InputMessage.form-control{:name => "InputMessage", :placeholder => "お問い合わせ内容", :required => "", :rows => "5"}
+              %span.input-group-addon
+                %i.glyphicon.glyphicon-ok.form-control-feedback
+          %input#submit.btn.wow.tada.btn-embossed.btn-primary.pull-right.animated.animated{:name => "submit", :type => "submit", :value => "送信"}/
+      %hr.featurette-divider.hidden-lg/
+      .col-md-5.col-md-push-1.address
+        %h3 Social
+        %li.social
+          %a{:href => "#"}
+            %i.fa.fa-facebook-square.fa-size
+          %a{:href => "#"}
+            %i.fa.fa-twitter-square.fa-size
+          %a{:href => "#"}
+            %i.fa.fa-google-plus-square.fa-size
+          %a{:href => "#"}
+            %i.fa.fa-flickr.fa-size
+        %h4 email
+        %p nekorporation25@gmail.com
+        %p フォームからお問い合わせください。

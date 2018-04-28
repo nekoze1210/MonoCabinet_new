@@ -1,0 +1,10 @@
+.col-md-4.col-xs-12.mono-content
+  .thumbnail
+    - if item.image?
+      = link_to image_tag(item.image.url, class: 'img img-responsive'), user_item_path(current_user, item.id), data: { turbolinks: false }
+    - else
+      = link_to image_tag('noimage.png', class: 'img img-responsive'), user_item_path(item.user_id, item), data: { turbolinks: false }
+    .caption
+      %h3.text-left= link_to item.item_name, user_item_path(current_user, item.id), data: { turbolinks: false }
+      %p.text-right
+        = item.created_at.strftime('%b %d %H:%M')

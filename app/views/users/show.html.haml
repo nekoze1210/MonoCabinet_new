@@ -1,0 +1,9 @@
+.col-md-12.col-xs-12.text-center{:style => "border-bottom:2px solid #bdc3c7;;"}
+  = image_tag current_user.avatar, :class => 'img img-responsive', :size => '150x150', :style => 'margin: 0 auto;'
+  = current_user.nickname
+  さん
+  %br/
+.container
+  .col-md-12
+    %h4 ステータス:
+  = link_to 'プロフィール編集', edit_user_path(current_user), class: 'btn btn-warning'

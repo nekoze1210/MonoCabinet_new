@@ -1,0 +1,16 @@
+%h4 あなたが登録した位置
+%table.table
+  %thead
+    %tr
+      %th 住所:
+      %th
+      %th 更新日時:
+    %tr
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td
+          = location.address
+          = link_to '[GoogleMapで確認]', "http://maps.google.co.jp/maps?q=#{location.address}",target: '_blank', class: 'text-right btn btn-danger'
+        %td
+        %td= location.created_at.strftime('%-m月%-d日 %H:%-M')

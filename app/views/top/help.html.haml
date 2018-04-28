@@ -1,0 +1,47 @@
+%h3.text-center
+  How to Otoshimonno??
+  %br>/
+  \-チュートリアル-
+.container
+  %h4 アイテムの登録
+  %p ログインが完了したら、無くしたくないアイテムを登録しましょう。
+  = image_tag 'ex-top.png',:class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+  %p 入力画面では、分かりやすいアイテム名、メーカー(わからない場合は空欄または特徴でもOK)を記入します。写真も持っていたら添付しましょう！
+  = image_tag 'ex-new.png' ,:class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+  %p
+    %strong ※位置情報機能をオフにしている場合、エラーが発生するので必ずオンにしてください。
+  %p 投稿が完了されると、トップページに登録したアイテムがこのように追加されています。
+  = image_tag 'ex-index.png', :class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+  %p
+    画像をクリックすると詳細ページに移動します。
+    %br>/
+    このページではアイテムの詳細や、保存した最新の位置情報3件までを確認することができます。
+  = image_tag 'ex-show.png' ,:class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+%hr/
+.container
+  %h4 位置情報の追加
+  %p
+    詳細ページにある、
+    %a.btn.btn-primary> ...もっと詳しく
+    ボタンをクリック/タップすると、そのアイテムに対する今まで登録してきた位置情報がすべて表示されます。
+  = image_tag 'ex-loc-index.png' ,:class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+  %p 初回では、まだ登録した時の位置情報しか表示されていません。外出先で無くさない為に随時更新をしましょう
+  %p
+    %a.btn.btn-primary> 更新する
+    ボタンをクリック/タップすると、位置情報の更新画面に移動します。
+  = image_tag 'ex-loc-new.png' ,:class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+  %p
+    %a.btn.btn-primary> 登録
+    ボタンを押すだけで位置情報が追加され、自動的に前の画面に戻ります。
+  = image_tag 'ex-loc-result.png' ,:class => 'img img-responsive img-rounded shadow', :style => 'margin:10px 0;'
+  %p 位置情報が追加されていることが確認できたら成功です! 時間おきにモノがあるかどうかを確認し、継続して更新することをおすすめします。
+%hr/
+.container.text-center
+  %h4
+    以上がOtoshimonnoの機能になります！
+    %br>/
+    1人でも多くの方が、モノを無くさない日が実現できるように是非とも活用してください!
+  %br/
+  - if user_signed_in?
+    = link_to 'アイテムを登録する', new_user_item_path(current_user.id), :class => "btn btn-primary"
+    %br/
