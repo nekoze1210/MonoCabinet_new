@@ -20,6 +20,7 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'kaminari'
 gem 'haml-rails'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
